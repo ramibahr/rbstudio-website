@@ -544,6 +544,65 @@
       margin-top: 8px;
     }
 
+    .form-success {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 48px 32px;
+      text-align: center;
+    }
+
+    .form-success.visible {
+      display: flex;
+    }
+
+    .success-circle {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: #ECFDF5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+
+    .success-circle svg {
+      width: 36px;
+      height: 36px;
+      stroke: #059669;
+      fill: none;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 50;
+      stroke-dashoffset: 50;
+      animation: drawTick 0.4s ease 0.3s forwards;
+    }
+
+    .success-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+
+    .success-sub {
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0.6); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes drawTick {
+      to { stroke-dashoffset: 0; }
+    }
+
     .contact-tagline {
       margin-top: 40px;
       font-size: 1rem;
@@ -892,12 +951,20 @@
           </div>
 
           <div class="form-submit">
-            <button type="submit" class="btn btn-primary">
+            <button type="submit" class="btn btn-primary" id="submitBtn">
               Send enquiry
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </button>
           </div>
         </form>
+
+        <div class="form-success" id="formSuccess">
+          <div class="success-circle">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div class="success-title">Enquiry sent!</div>
+          <div class="success-sub">Thanks for reaching out — we'll be in touch soon.</div>
+        </div>
 
         <p class="contact-tagline fade-in fade-in-delay-3">Based in London. Ready when you are.</p>
       </div>
@@ -962,6 +1029,35 @@
     document.querySelectorAll('#hero .fade-in').forEach(el => {
       setTimeout(() => el.classList.add('visible'), 100);
     });
+
+    // Enquiry form AJAX submission
+    const enquiryForm = document.querySelector('.enquiry-form');
+    const formSuccess = document.getElementById('formSuccess');
+
+    if (enquiryForm) {
+      enquiryForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const submitBtn = document.getElementById('submitBtn');
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+
+        const formData = new FormData(enquiryForm);
+
+        try {
+          await fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams(formData).toString()
+          });
+          enquiryForm.style.display = 'none';
+          formSuccess.classList.add('visible');
+        } catch (err) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Send enquiry';
+          alert('Something went wrong. Please try again.');
+        }
+      });
+    }
   </script>
 </body>
 </html>
