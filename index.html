@@ -398,44 +398,78 @@
     }
 
     .work-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      aspect-ratio: 4/3;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      padding: 32px;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
 
-    .work-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.07);
-    }
+.work-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.07);
+}
 
-    .work-card-dot {
-      width: 10px;
-      height: 10px;
-      background: var(--accent);
-      border-radius: 50%;
-      opacity: 0.35;
-    }
+.work-card-preview {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  background: #EFEFED;
+  position: relative;
+}
 
-    .work-card-label {
-      font-size: 0.88rem;
-      font-weight: 600;
-      color: var(--muted);
-      text-align: center;
-    }
+.work-card-preview iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  pointer-events: none;
+}
 
-    .work-card-sub {
-      font-size: 0.78rem;
-      color: #B0B0AE;
-      text-align: center;
-    }
+.work-card-footer {
+  padding: 18px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--border);
+}
+
+.work-card-label {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.work-card-niche {
+  font-size: 0.76rem;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.work-card-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  height: 220px;
+  padding: 32px;
+}
+
+.work-card-dot {
+  width: 10px;
+  height: 10px;
+  background: var(--accent);
+  border-radius: 50%;
+  opacity: 0.35;
+}
+
+.work-card-sub {
+  font-size: 0.78rem;
+  color: #B0B0AE;
+  text-align: center;
+}
 
     /* ── CONTACT ── */
     #contact {
@@ -756,21 +790,37 @@
         <p class="section-sub">Early days, but big things coming.</p>
       </div>
 
-      <div class="work-grid">
+       <div class="work-grid">
         <div class="work-card fade-in fade-in-delay-1">
-          <div class="work-card-dot"></div>
-          <div class="work-card-label">Coming soon</div>
-          <div class="work-card-sub">First projects launching shortly</div>
+          <div class="work-card-preview">
+            <iframe src="https://ramibahr.github.io/tech-mech-demo/" title="Tech Mech Demo" loading="lazy"></iframe>
+          </div>
+          <div class="work-card-footer">
+            <div>
+              <div class="work-card-label">Tech Mech</div>
+              <div class="work-card-niche">Auto Repair · Demo</div>
+            </div>
+            <a href="https://ramibahr.github.io/tech-mech-demo/" target="_blank" rel="noopener" class="link-accent">View site <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          </div>
         </div>
         <div class="work-card fade-in fade-in-delay-2">
-          <div class="work-card-dot"></div>
-          <div class="work-card-label">Coming soon</div>
-          <div class="work-card-sub">First projects launching shortly</div>
+          <div class="work-card-preview">
+            <iframe src="https://ramibahr.github.io/zara-kitchen-demo/" title="Zara Kitchen Demo" loading="lazy"></iframe>
+          </div>
+          <div class="work-card-footer">
+            <div>
+              <div class="work-card-label">Zara Kitchen</div>
+              <div class="work-card-niche">Restaurant · Demo</div>
+            </div>
+            <a href="https://ramibahr.github.io/zara-kitchen-demo/" target="_blank" rel="noopener" class="link-accent">View site <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          </div>
         </div>
         <div class="work-card fade-in fade-in-delay-3">
-          <div class="work-card-dot"></div>
-          <div class="work-card-label">Coming soon</div>
-          <div class="work-card-sub">First projects launching shortly</div>
+          <div class="work-card-empty">
+            <div class="work-card-dot"></div>
+            <div class="work-card-label" style="color: var(--muted);">Coming soon</div>
+            <div class="work-card-sub">Next project launching shortly</div>
+          </div>
         </div>
       </div>
     </div>
