@@ -20,9 +20,20 @@
       --text: #0F0F0F;
       --accent: #2563EB;
       --accent-hover: #1D4ED8;
+      --accent-tint: #EFF6FF;
+      --accent-overlay: rgba(37, 99, 235, 0.1);
+      --accent-glow: rgba(37, 99, 235, 0.3);
       --muted: #6B7280;
       --border: #E5E5E3;
       --card-bg: #FFFFFF;
+      --surface-alt: #F0F4FF;
+      --surface-pill: #EFEFED;
+      --success: #059669;
+      --success-bg: #ECFDF5;
+      --accent-on-dark: #60A5FA;
+      --shadow-sm: 0 1px 20px rgba(0, 0, 0, 0.08);
+      --shadow-md: 0 12px 40px rgba(0, 0, 0, 0.08);
+      --shadow-menu: 0 8px 24px rgba(0, 0, 0, 0.08);
       --nav-height: 68px;
     }
 
@@ -52,7 +63,7 @@
     }
 
     nav.scrolled {
-      box-shadow: 0 1px 20px rgba(0, 0, 0, 0.08);
+      box-shadow: var(--shadow-sm);
     }
 
     .nav-inner {
@@ -84,6 +95,7 @@
       font-weight: 500;
       color: var(--muted);
       text-decoration: none;
+      padding: 8px 0;
       transition: color 0.2s ease;
     }
 
@@ -107,7 +119,7 @@
       height: 2px;
       background: var(--text);
       border-radius: 2px;
-      transition: all 0.2s ease;
+      transition: background-color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
     }
 
     /* ── CONTAINER ── */
@@ -156,7 +168,7 @@
     .btn-primary:hover {
       background: var(--accent-hover);
       transform: scale(1.04);
-      box-shadow: 0 4px 20px rgba(37, 99, 235, 0.3);
+      box-shadow: 0 4px 20px var(--accent-glow);
     }
 
     .btn-ghost {
@@ -178,13 +190,70 @@
       font-size: 0.9rem;
       display: inline-flex;
       align-items: center;
-      gap: 4px;
-      transition: gap 0.2s ease, opacity 0.2s ease;
+      gap: 6px;
+      transition: opacity 0.2s ease;
+    }
+
+    .link-accent svg {
+      transition: transform 0.2s ease;
     }
 
     .link-accent:hover {
-      gap: 8px;
-      opacity: 0.8;
+      opacity: 0.75;
+    }
+
+    .link-accent:hover svg {
+      transform: translateX(3px);
+    }
+
+    /* ── FOCUS STYLES ── */
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    .btn:focus-visible {
+      outline-offset: 4px;
+      border-radius: 8px;
+    }
+
+    .form-group input:focus-visible,
+    .form-group select:focus-visible,
+    .form-group textarea:focus-visible {
+      outline: none;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .sr-only-focusable:focus {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: auto;
+      height: auto;
+      padding: 10px 18px;
+      margin: 0;
+      overflow: visible;
+      clip: auto;
+      white-space: normal;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.88rem;
+      font-weight: 600;
+      border-radius: 0 0 8px 0;
+      z-index: 9999;
+      text-decoration: none;
     }
 
     /* ── SECTION SHARED ── */
@@ -235,7 +304,7 @@
       font-size: 0.82rem;
       font-weight: 500;
       color: var(--muted);
-      background: #EFEFED;
+      background: var(--surface-pill);
       padding: 6px 14px;
       border-radius: 100px;
       margin-bottom: 32px;
@@ -278,60 +347,44 @@
       margin-bottom: 60px;
     }
 
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-
-    .service-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 36px 32px;
+    .services-list {
       display: flex;
       flex-direction: column;
-      gap: 16px;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
     }
 
-    .service-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
-      border-color: var(--accent);
+    .service-row {
+      display: grid;
+      grid-template-columns: 52px 1fr;
+      gap: 0 28px;
+      align-items: start;
+      padding: 32px 0;
+      border-top: 1px solid var(--border);
     }
 
-    .service-icon {
-      width: 44px;
-      height: 44px;
-      background: #EFF6FF;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .service-row:last-child {
+      border-bottom: 1px solid var(--border);
     }
 
-    .service-icon svg {
-      width: 22px;
-      height: 22px;
-      stroke: var(--accent);
-      fill: none;
-      stroke-width: 1.8;
-      stroke-linecap: round;
-      stroke-linejoin: round;
+    .service-num {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      padding-top: 4px;
     }
 
     .service-name {
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       font-weight: 700;
-      letter-spacing: -0.01em;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
     }
 
     .service-desc {
       font-size: 0.92rem;
       color: var(--muted);
       line-height: 1.65;
-      flex: 1;
+      margin-bottom: 16px;
     }
 
     /* ── WHY ── */
@@ -341,7 +394,7 @@
     }
 
     #why .section-label {
-      color: #60A5FA;
+      color: var(--accent-on-dark);
     }
 
     #why .section-title {
@@ -408,14 +461,14 @@
 
     .work-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.07);
+      box-shadow: var(--shadow-md);
     }
 
     .work-card-preview {
       width: 100%;
       height: 220px;
       overflow: hidden;
-      background: #EFEFED;
+      background: var(--surface-pill);
       position: relative;
     }
 
@@ -465,13 +518,17 @@
 
     .work-card-sub {
       font-size: 0.78rem;
-      color: #B0B0AE;
+      color: var(--muted);
       text-align: center;
+    }
+
+    .work-card-empty .work-card-label {
+      color: var(--muted);
     }
 
     /* ── CONTACT ── */
     #contact {
-      background: #F0F4FF;
+      background: var(--surface-alt);
     }
 
     .contact-inner {
@@ -507,7 +564,7 @@
     .form-group input,
     .form-group select,
     .form-group textarea {
-      background: #fff;
+      background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 8px;
       padding: 12px 14px;
@@ -523,7 +580,7 @@
     .form-group select:focus,
     .form-group textarea:focus {
       border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+      box-shadow: 0 0 0 3px var(--accent-overlay);
     }
 
     .form-group textarea {
@@ -561,17 +618,17 @@
       width: 72px;
       height: 72px;
       border-radius: 50%;
-      background: #ECFDF5;
+      background: var(--success-bg);
       display: flex;
       align-items: center;
       justify-content: center;
-      animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+      animation: popIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
     .success-circle svg {
       width: 36px;
       height: 36px;
-      stroke: #059669;
+      stroke: var(--success);
       fill: none;
       stroke-width: 2.5;
       stroke-linecap: round;
@@ -666,7 +723,7 @@
     }
 
     .pricing-card:hover {
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+      box-shadow: var(--shadow-md);
     }
 
     .pricing-split {
@@ -728,7 +785,7 @@
       width: 18px;
       height: 18px;
       min-width: 18px;
-      background: #EFF6FF url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%232563EB' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") no-repeat center;
+      background: var(--accent-tint) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%232563EB' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") no-repeat center;
       border-radius: 50%;
     }
 
@@ -765,7 +822,7 @@
 
     .testimonial-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.07);
+      box-shadow: var(--shadow-md);
     }
 
     .testimonial-quote-mark {
@@ -802,6 +859,14 @@
       font-size: 0.88rem;
       font-weight: 700;
       color: var(--text);
+      font-style: normal;
+      display: block;
+    }
+
+    .required-mark {
+      color: var(--accent);
+      font-size: 0.85em;
+      margin-left: 2px;
     }
 
     .testimonial-biz {
@@ -822,7 +887,7 @@
       background: var(--bg);
       border-bottom: 1px solid var(--border);
       padding: 12px 24px 20px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      box-shadow: var(--shadow-menu);
       opacity: 0;
       transform: translateY(-8px);
       visibility: hidden;
@@ -865,11 +930,10 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
-      .services-grid,
       .why-grid,
       .work-grid,
       .testimonials-grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
       }
     }
 
@@ -886,7 +950,6 @@
         padding: 72px 0 80px;
       }
 
-      .services-grid,
       .why-grid,
       .work-grid,
       .testimonials-grid {
@@ -912,12 +975,25 @@
         grid-template-columns: 1fr;
       }
     }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      .fade-in {
+        opacity: 1;
+        transform: none;
+      }
+    }
   </style>
 </head>
 <body>
 
   <!-- NAV -->
-  <nav id="navbar">
+  <a href="#main-content" class="sr-only sr-only-focusable">Skip to main content</a>
+  <nav id="navbar" aria-label="Main">
     <div class="nav-inner">
       <a href="#hero" class="nav-logo">RB Studio</a>
       <ul class="nav-links">
@@ -927,7 +1003,7 @@
         <li><a href="#testimonials">Testimonials</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
-      <button class="nav-toggle" id="navToggle" aria-label="Menu">
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobileMenu">
         <span></span>
         <span></span>
         <span></span>
@@ -935,13 +1011,15 @@
     </div>
   </nav>
 
-  <div class="mobile-menu" id="mobileMenu">
+  <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
     <a href="#services">Services</a>
     <a href="#work">Work</a>
     <a href="#pricing">Pricing</a>
     <a href="#testimonials">Testimonials</a>
     <a href="#contact">Contact</a>
-  </div>
+  </nav>
+
+  <main id="main-content">
 
   <!-- HERO -->
   <section id="hero">
@@ -977,32 +1055,32 @@
         <p class="section-sub">Everything you need to get online, stay online, and look the part.</p>
       </div>
 
-      <div class="services-grid">
-        <div class="service-card fade-in fade-in-delay-1">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M9 21V9"/></svg>
+      <div class="services-list">
+        <div class="service-row fade-in fade-in-delay-1">
+          <div class="service-num">01</div>
+          <div>
+            <h3 class="service-name">Website Design</h3>
+            <p class="service-desc">A clean, fast site built around your business, designed to convert visitors into customers.</p>
+            <a href="#contact" class="link-accent">Get in touch <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
           </div>
-          <div class="service-name">Website Design</div>
-          <p class="service-desc">A clean, fast site built around your business — designed to convert visitors into customers.</p>
-          <a href="#contact" class="link-accent">Get in touch <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </div>
 
-        <div class="service-card fade-in fade-in-delay-2">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <div class="service-row fade-in fade-in-delay-2">
+          <div class="service-num">02</div>
+          <div>
+            <h3 class="service-name">Monthly Care</h3>
+            <p class="service-desc">Hosting, updates and support, so you can focus on running your business.</p>
+            <a href="#contact" class="link-accent">Get in touch <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
           </div>
-          <div class="service-name">Monthly Care</div>
-          <p class="service-desc">Hosting, updates and support — we handle everything so you can focus on running your business.</p>
-          <a href="#contact" class="link-accent">Get in touch <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </div>
 
-        <div class="service-card fade-in fade-in-delay-3">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+        <div class="service-row fade-in fade-in-delay-3">
+          <div class="service-num">03</div>
+          <div>
+            <h3 class="service-name">Website Refresh</h3>
+            <p class="service-desc">Modernise your existing site and get back online properly, without starting from scratch.</p>
+            <a href="#contact" class="link-accent">Get in touch <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
           </div>
-          <div class="service-name">Website Refresh</div>
-          <p class="service-desc">Modernise your existing site and get back online properly — without starting from scratch.</p>
-          <a href="#contact" class="link-accent">Get in touch <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </div>
       </div>
     </div>
@@ -1018,18 +1096,18 @@
       <div class="why-grid">
         <div class="why-item fade-in fade-in-delay-1">
           <div class="why-number">01</div>
-          <div class="why-title">Fast turnaround</div>
+          <h3 class="why-title">Fast turnaround</h3>
           <p class="why-desc">Most projects delivered in under two weeks. No long waiting lists, no drawn-out timelines.</p>
         </div>
         <div class="why-item fade-in fade-in-delay-2">
           <div class="why-number">02</div>
-          <div class="why-title">Mobile first</div>
-          <p class="why-desc">Every site is designed and tested on mobile before anything else — because that's where your customers are.</p>
+          <h3 class="why-title">Mobile first</h3>
+          <p class="why-desc">Every site is designed and tested on mobile before anything else, because that's where your customers are.</p>
         </div>
         <div class="why-item fade-in fade-in-delay-3">
           <div class="why-number">03</div>
-          <div class="why-title">Based in London</div>
-          <p class="why-desc">London studio, serving businesses across the UK. Real people, real support — not a faceless agency.</p>
+          <h3 class="why-title">Based in London</h3>
+          <p class="why-desc">London studio, serving businesses across the UK. Real people, real support. Not a faceless agency.</p>
         </div>
       </div>
     </div>
@@ -1073,7 +1151,7 @@
         <div class="work-card fade-in fade-in-delay-3">
           <div class="work-card-empty">
             <div class="work-card-dot"></div>
-            <div class="work-card-label" style="color: var(--muted);">Coming soon</div>
+            <div class="work-card-label">Coming soon</div>
             <div class="work-card-sub">Next project launching shortly</div>
           </div>
         </div>
@@ -1095,12 +1173,12 @@
         <div class="pricing-card fade-in">
           <div class="pricing-split">
             <div>
-              <div class="pricing-name">Website Build</div>
+              <h3 class="pricing-name">Website Build</h3>
               <div class="pricing-price">Custom quote</div>
               <span class="pricing-tag">Price varies by project</span>
             </div>
             <div>
-              <div class="pricing-name">Monthly Care</div>
+              <h3 class="pricing-name">Monthly Care</h3>
               <div class="pricing-price">£75 <span>/ month</span></div>
               <span class="pricing-tag">Included with every build</span>
             </div>
@@ -1115,7 +1193,7 @@
             <li>Updates &amp; maintenance</li>
             <li>Email support</li>
           </ul>
-          <p class="pricing-note">Every website includes Monthly Care — so you're always supported after launch.</p>
+          <p class="pricing-note">Every website includes Monthly Care, so you're always supported after launch.</p>
           <div>
             <a href="#contact" class="btn btn-primary">
               Get in touch
@@ -1139,30 +1217,30 @@
 
       <div class="testimonials-grid">
         <div class="testimonial-card fade-in fade-in-delay-1">
-          <div class="testimonial-quote-mark">"</div>
-          <p class="testimonial-text">We went from no online presence at all to a site we're genuinely proud of. Enquiries have picked up and customers always comment on how professional we look now.</p>
-          <div class="testimonial-author">
-            <div class="testimonial-name">Sarah M.</div>
-            <div class="testimonial-biz">Hair Salon, East London</div>
-          </div>
+          <div class="testimonial-quote-mark" aria-hidden="true">"</div>
+          <blockquote class="testimonial-text">We went from no online presence at all to a site we're genuinely proud of. Enquiries have picked up and customers always comment on how professional we look now.</blockquote>
+          <footer class="testimonial-author">
+            <cite class="testimonial-name">Sarah M.</cite>
+            <span class="testimonial-biz">Hair Salon, East London</span>
+          </footer>
         </div>
 
         <div class="testimonial-card fade-in fade-in-delay-2">
-          <div class="testimonial-quote-mark">"</div>
-          <p class="testimonial-text">Had the site built and live within two weeks. Easy to deal with, quick turnaround, and the result was exactly what I was after. Would recommend without hesitation.</p>
-          <div class="testimonial-author">
-            <div class="testimonial-name">Jason T.</div>
-            <div class="testimonial-biz">Auto Repairs, South London</div>
-          </div>
+          <div class="testimonial-quote-mark" aria-hidden="true">"</div>
+          <blockquote class="testimonial-text">Had the site built and live within two weeks. Easy to deal with, quick turnaround, and the result was exactly what I was after. Would recommend without hesitation.</blockquote>
+          <footer class="testimonial-author">
+            <cite class="testimonial-name">Jason T.</cite>
+            <span class="testimonial-biz">Auto Repairs, South London</span>
+          </footer>
         </div>
 
         <div class="testimonial-card fade-in fade-in-delay-3">
-          <div class="testimonial-quote-mark">"</div>
-          <p class="testimonial-text">Our old website was doing us no favours. The new one is clean, loads fast, and has already brought in new bookings. Brilliant service from start to finish.</p>
-          <div class="testimonial-author">
-            <div class="testimonial-name">Priya K.</div>
-            <div class="testimonial-biz">Beauty Therapist, North London</div>
-          </div>
+          <div class="testimonial-quote-mark" aria-hidden="true">"</div>
+          <blockquote class="testimonial-text">Our old website was doing us no favours. The new one is clean, loads fast, and has already brought in new bookings. Brilliant service from start to finish.</blockquote>
+          <footer class="testimonial-author">
+            <cite class="testimonial-name">Priya K.</cite>
+            <span class="testimonial-biz">Beauty Therapist, North London</span>
+          </footer>
         </div>
       </div>
     </div>
@@ -1183,11 +1261,11 @@
 
           <div class="form-row">
             <div class="form-group">
-              <label for="name">Name</label>
+              <label for="name">Name <span class="required-mark" aria-hidden="true">*</span></label>
               <input type="text" id="name" name="name" placeholder="Your name" required />
             </div>
             <div class="form-group">
-              <label for="email">Email</label>
+              <label for="email">Email <span class="required-mark" aria-hidden="true">*</span></label>
               <input type="email" id="email" name="email" placeholder="you@example.com" required />
             </div>
           </div>
@@ -1218,18 +1296,20 @@
 
           <div class="form-submit">
             <button type="submit" class="btn btn-primary" id="submitBtn">
-              Send enquiry
+              <span class="btn-text">Send enquiry</span>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </button>
           </div>
         </form>
 
+        <div id="formStatus" aria-live="polite" class="sr-only"></div>
+
         <div class="form-success" id="formSuccess">
           <div class="success-circle">
             <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
           </div>
-          <div class="success-title">Enquiry sent!</div>
-          <div class="success-sub">Thanks for reaching out — we'll be in touch soon.</div>
+          <p class="success-title">Enquiry sent!</p>
+          <p class="success-sub">Thanks for reaching out. We'll be in touch soon.</p>
         </div>
 
         <p class="contact-tagline fade-in fade-in-delay-3">Based in London. Ready when you are.</p>
@@ -1237,31 +1317,31 @@
     </div>
   </section>
 
+  </main>
+
   <!-- FOOTER -->
   <footer>
     <div class="container">
       <div class="footer-inner">
         <a href="#hero" class="footer-logo">RB Studio</a>
-        <p class="footer-copy">© 2026 RB Studio — Web Design London</p>
+        <p class="footer-copy">© 2026 RB Studio · Web Design London</p>
       </div>
     </div>
   </footer>
 
   <script>
     const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 10);
-    });
-
     const navToggle = document.getElementById('navToggle');
     const mobileMenu = document.getElementById('mobileMenu');
 
     function openMenu() {
       mobileMenu.classList.add('open');
+      navToggle.setAttribute('aria-expanded', 'true');
     }
 
     function closeMenu() {
       mobileMenu.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
     }
 
     navToggle.addEventListener('click', () => {
@@ -1272,8 +1352,16 @@
       link.addEventListener('click', closeMenu);
     });
 
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
+        closeMenu();
+        navToggle.focus();
+      }
+    });
+
     let lastScrollY = window.scrollY;
     window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 10);
       if (mobileMenu.classList.contains('open') && window.scrollY !== lastScrollY) {
         closeMenu();
       }
@@ -1305,7 +1393,9 @@
         e.preventDefault();
         const submitBtn = document.getElementById('submitBtn');
         submitBtn.disabled = true;
-        submitBtn.textContent = 'Sending...';
+        submitBtn.setAttribute('aria-busy', 'true');
+        submitBtn.querySelector('.btn-text').textContent = 'Sending...';
+        document.getElementById('formStatus').textContent = 'Sending your enquiry...';
 
         const formData = new FormData(enquiryForm);
 
@@ -1317,10 +1407,12 @@
           });
           enquiryForm.style.display = 'none';
           formSuccess.classList.add('visible');
+          document.getElementById('formStatus').textContent = 'Enquiry sent successfully.';
         } catch (err) {
           submitBtn.disabled = false;
-          submitBtn.textContent = 'Send enquiry';
-          alert('Something went wrong. Please try again.');
+          submitBtn.removeAttribute('aria-busy');
+          submitBtn.querySelector('.btn-text').textContent = 'Send enquiry';
+          document.getElementById('formStatus').textContent = 'Something went wrong. Please try again.';
         }
       });
     }
