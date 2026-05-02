@@ -648,9 +648,8 @@
     }
 
     .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
+      display: flex;
+      justify-content: center;
     }
 
     .pricing-card {
@@ -660,19 +659,22 @@
       padding: 40px 36px;
       display: flex;
       flex-direction: column;
-      gap: 20px;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      gap: 24px;
+      max-width: 680px;
+      width: 100%;
+      transition: box-shadow 0.2s ease;
     }
 
     .pricing-card:hover {
-      transform: translateY(-4px);
       box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
-      border-color: var(--accent);
     }
 
-    .pricing-card.featured {
-      border-color: var(--accent);
-      background: #EEF3FF;
+    .pricing-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--border);
     }
 
     .pricing-name {
@@ -682,7 +684,7 @@
     }
 
     .pricing-price {
-      font-size: 2.4rem;
+      font-size: 2.2rem;
       font-weight: 800;
       letter-spacing: -0.04em;
       color: var(--text);
@@ -705,18 +707,11 @@
       margin-top: 6px;
     }
 
-    .pricing-desc {
-      font-size: 0.92rem;
-      color: var(--muted);
-      line-height: 1.65;
-    }
-
     .pricing-list {
       list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 11px;
-      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px 32px;
     }
 
     .pricing-list li {
@@ -735,6 +730,13 @@
       min-width: 18px;
       background: #EFF6FF url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%232563EB' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") no-repeat center;
       border-radius: 50%;
+    }
+
+    .pricing-note {
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-style: italic;
+      line-height: 1.6;
     }
 
     /* ── TESTIMONIALS ── */
@@ -887,8 +889,12 @@
       .services-grid,
       .why-grid,
       .work-grid,
-      .testimonials-grid,
-      .pricing-grid {
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .pricing-split,
+      .pricing-list {
         grid-template-columns: 1fr;
       }
 
@@ -1086,38 +1092,36 @@
       </div>
 
       <div class="pricing-grid">
-        <div class="pricing-card fade-in fade-in-delay-1">
-          <div>
-            <div class="pricing-name">Website Build</div>
-            <div class="pricing-price">Custom quote</div>
-            <span class="pricing-tag">Price varies by project size and requirements</span>
+        <div class="pricing-card fade-in">
+          <div class="pricing-split">
+            <div>
+              <div class="pricing-name">Website Build</div>
+              <div class="pricing-price">Custom quote</div>
+              <span class="pricing-tag">Price varies by project</span>
+            </div>
+            <div>
+              <div class="pricing-name">Monthly Care</div>
+              <div class="pricing-price">£75 <span>/ month</span></div>
+              <span class="pricing-tag">Included with every build</span>
+            </div>
           </div>
-          <p class="pricing-desc">A one-off investment to get your business online — built around your brand and goals.</p>
           <ul class="pricing-list">
             <li>Custom design, built around your brand</li>
             <li>Mobile optimised</li>
             <li>Fast loading</li>
             <li>Up to 5 pages</li>
             <li>Launch ready</li>
-          </ul>
-          <a href="#contact" class="btn btn-ghost">Get in touch</a>
-        </div>
-
-        <div class="pricing-card featured fade-in fade-in-delay-2">
-          <div>
-            <div class="pricing-name">Monthly Care</div>
-            <div class="pricing-price">£75 <span>/ month</span></div>
-            <span class="pricing-tag">Everything to keep your site running</span>
-          </div>
-          <p class="pricing-desc">Hosting, updates and support — we handle everything so you can focus on running your business.</p>
-          <ul class="pricing-list">
             <li>Managed hosting</li>
-            <li>Content updates</li>
-            <li>Ongoing maintenance</li>
+            <li>Updates &amp; maintenance</li>
             <li>Email support</li>
-            <li>Monthly performance check</li>
           </ul>
-          <a href="#contact" class="btn btn-primary">Get in touch</a>
+          <p class="pricing-note">Every website includes Monthly Care — so you're always supported after launch.</p>
+          <div>
+            <a href="#contact" class="btn btn-primary">
+              Get in touch
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
         </div>
       </div>
     </div>
