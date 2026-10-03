@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <link rel="preconnect" href="https://ramibahr.github.io" />
   <title>RB Studio — Web Design London</title>
   <link rel="icon" type="image/png" href="RB Favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -39,7 +40,6 @@
       --input-border: #6B6B6B;
       --shadow-sm: 0 1px 20px rgba(0, 0, 0, 0.08);
       --shadow-md: 0 12px 40px rgba(0, 0, 0, 0.08);
-      --shadow-menu: 0 8px 24px rgba(0, 0, 0, 0.08);
       --text-inverse: #FAFAFA;
       --text-on-dark-muted: rgba(250, 250, 250, 0.55);
       --error: #F87171;
@@ -191,18 +191,6 @@
       box-shadow: 0 4px 20px var(--accent-glow);
     }
 
-    .btn-ghost {
-      background: transparent;
-      color: var(--accent);
-      border: 1.5px solid var(--accent);
-    }
-
-    .btn-ghost:hover {
-      background: var(--accent);
-      color: var(--text-inverse);
-      transform: scale(1.04);
-    }
-
     .link-accent {
       color: var(--accent);
       text-decoration: none;
@@ -211,6 +199,7 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
+      min-height: 44px;
       transition: opacity 0.2s ease;
     }
 
@@ -477,34 +466,6 @@
       margin-top: 2px;
     }
 
-    .work-card-empty {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      height: 220px;
-      padding: 32px;
-    }
-
-    .work-card-dot {
-      width: 10px;
-      height: 10px;
-      background: var(--accent);
-      border-radius: 50%;
-      opacity: 0.35;
-    }
-
-    .work-card-sub {
-      font-size: 0.78rem;
-      color: var(--muted);
-      text-align: center;
-    }
-
-    .work-card-empty .work-card-label {
-      color: var(--muted);
-    }
-
     /* ── CONTACT ── */
     #contact {
       background: var(--surface-alt);
@@ -547,7 +508,7 @@
       border: 1px solid var(--input-border);
       border-radius: 8px;
       padding: 12px 14px;
-      font-size: 0.95rem;
+      font-size: 1rem;
       font-family: inherit;
       color: var(--text);
       transition: border-color 0.2s ease, box-shadow 0.2s ease;
@@ -631,7 +592,7 @@
     }
 
     .success-sub {
-      font-size: 0.92rem;
+      font-size: 1rem;
       color: var(--muted);
     }
 
@@ -772,7 +733,7 @@
     }
 
     .pricing-list li {
-      font-size: 0.92rem;
+      font-size: 1rem;
       color: var(--text);
       display: flex;
       align-items: center;
@@ -790,7 +751,7 @@
     }
 
     .pricing-note {
-      font-size: 0.85rem;
+      font-size: 1rem;
       color: var(--muted);
       font-style: italic;
       line-height: 1.6;
@@ -840,7 +801,7 @@
     }
 
     .testimonial-text {
-      font-size: 0.95rem;
+      font-size: 1rem;
       color: var(--text);
       line-height: 1.75;
       padding-top: 20px;
@@ -938,7 +899,7 @@
       }
     }
 
-    @media (max-width: 640px) {
+    @media (max-width: 767px) {
       .nav-links {
         display: none;
       }
@@ -946,7 +907,9 @@
       .nav-toggle {
         display: flex;
       }
+    }
 
+    @media (max-width: 640px) {
       #hero {
         padding: 72px 0 80px;
       }
