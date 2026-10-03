@@ -33,7 +33,8 @@
       --success: #34D399;
       --success-bg: rgba(52, 211, 153, 0.12);
       --accent-on-dark: #FAFAFA;
-      --section-label-color: rgba(250, 250, 250, 0.45);
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-strong: rgba(255, 255, 255, 0.3);
       --surface-deep: #111111;
       --accent-solid: #FFFFFF;
       --on-accent: #0F0F0F;
@@ -79,7 +80,7 @@
 
     nav.scrolled {
       background: var(--bg);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid var(--border-subtle);
       box-shadow: var(--shadow-sm);
     }
 
@@ -117,7 +118,7 @@
     .nav-links a {
       font-size: 0.9rem;
       font-weight: 400;
-      color: rgba(250, 250, 250, 0.55);
+      color: var(--muted);
       text-decoration: none;
       padding: 8px 0;
       transition: color 0.2s ease;
@@ -207,7 +208,7 @@
     .btn-ghost {
       background: transparent;
       color: var(--text);
-      border: 1.5px solid rgba(255, 255, 255, 0.3);
+      border: 1.5px solid var(--border-strong);
     }
 
     .btn-ghost:hover {
@@ -483,6 +484,28 @@
       border-top: 1px solid var(--border);
     }
 
+    .preview-load {
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      height: 44px;
+      width: fit-content;
+      padding: 0 20px;
+      background: var(--card-bg);
+      color: var(--text);
+      border: 1px solid var(--border-strong);
+      border-radius: 8px;
+      font: inherit;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .preview-load:hover {
+      background: var(--accent-tint);
+    }
+
     .work-card-label {
       font-size: 0.88rem;
       font-weight: 600;
@@ -675,7 +698,7 @@
     }
 
     .footer-copy {
-      font-size: 0.82rem;
+      font-size: 1rem;
       color: var(--muted);
     }
 
@@ -846,7 +869,7 @@
     }
 
     .testimonial-name {
-      font-size: 0.88rem;
+      font-size: 1rem;
       font-weight: 700;
       color: var(--text);
       font-style: normal;
@@ -876,7 +899,7 @@
       height: auto;
       z-index: 99;
       background: var(--card-bg);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid var(--border-subtle);
       padding: 12px 24px 20px;
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.14);
       opacity: 0;
@@ -1119,7 +1142,8 @@
       <div class="work-grid">
         <div class="work-card fade-in fade-in-delay-1">
           <div class="work-card-preview">
-            <iframe src="https://ramibahr.github.io/tech-mech-demo/" title="Tech Mech Demo" loading="lazy"></iframe>
+            <iframe data-src="https://ramibahr.github.io/tech-mech-demo/" title="Tech Mech Demo" loading="lazy"></iframe>
+            <button type="button" class="preview-load">Load preview</button>
           </div>
           <div class="work-card-footer">
             <div>
@@ -1131,7 +1155,8 @@
         </div>
         <div class="work-card fade-in fade-in-delay-2">
           <div class="work-card-preview">
-            <iframe src="https://ramibahr.github.io/zara-kitchen-demo/" title="Zara Kitchen Demo" loading="lazy"></iframe>
+            <iframe data-src="https://ramibahr.github.io/zara-kitchen-demo/" title="Zara Kitchen Demo" loading="lazy"></iframe>
+            <button type="button" class="preview-load">Load preview</button>
           </div>
           <div class="work-card-footer">
             <div>
@@ -1143,7 +1168,8 @@
         </div>
         <div class="work-card fade-in fade-in-delay-3">
           <div class="work-card-preview">
-            <iframe src="https://ramibahr.github.io/maison-hair-demo/" title="Maison Hair Demo" loading="lazy"></iframe>
+            <iframe data-src="https://ramibahr.github.io/maison-hair-demo/" title="Maison Hair Demo" loading="lazy"></iframe>
+            <button type="button" class="preview-load">Load preview</button>
           </div>
           <div class="work-card-footer">
             <div>
@@ -1375,6 +1401,14 @@
     }, { threshold: 0.12 });
 
     fadeEls.forEach(el => observer.observe(el));
+
+    document.querySelectorAll('.preview-load').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const frame = btn.parentElement.querySelector('iframe');
+        frame.src = frame.dataset.src;
+        btn.remove();
+      });
+    });
 
     document.querySelectorAll('#hero .fade-in').forEach(el => {
       setTimeout(() => el.classList.add('visible'), 100);
