@@ -276,15 +276,6 @@
       padding: 100px 0;
     }
 
-    .section-label {
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--section-label-color);
-      margin-bottom: 14px;
-    }
-
     .section-title {
       font-size: clamp(1.8rem, 4vw, 2.6rem);
       font-weight: 800;
@@ -310,26 +301,6 @@
 
     .hero-content {
       max-width: 720px;
-    }
-
-    .hero-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.82rem;
-      font-weight: 400;
-      color: var(--muted);
-      background: var(--surface-pill);
-      padding: 6px 14px;
-      border-radius: 100px;
-      margin-bottom: 32px;
-    }
-
-    .hero-dot {
-      width: 6px;
-      height: 6px;
-      background: var(--accent);
-      border-radius: 50%;
     }
 
     .hero-title {
@@ -370,7 +341,7 @@
 
     .service-row {
       display: grid;
-      grid-template-columns: 52px 1fr;
+      grid-template-columns: 1fr;
       gap: 0 28px;
       align-items: start;
       padding: 32px 0;
@@ -379,14 +350,6 @@
 
     .service-row:last-child {
       border-bottom: 1px solid var(--border);
-    }
-
-    .service-num {
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--accent);
-      letter-spacing: 0.1em;
-      padding-top: 4px;
     }
 
     .service-name {
@@ -409,10 +372,6 @@
       color: var(--text-inverse);
     }
 
-    #why .section-label {
-      color: var(--accent-on-dark);
-    }
-
     #why .section-title {
       color: var(--text-inverse);
     }
@@ -428,14 +387,6 @@
       display: flex;
       flex-direction: column;
       gap: 12px;
-    }
-
-    .why-number {
-      font-size: 2.5rem;
-      font-weight: 800;
-      color: var(--accent);
-      letter-spacing: -0.04em;
-      line-height: 1;
     }
 
     .why-title {
@@ -1070,10 +1021,6 @@
   <section id="hero">
     <div class="container">
       <div class="hero-content">
-        <div class="hero-eyebrow fade-in">
-          <span class="hero-dot"></span>
-          London-based web design studio
-        </div>
         <h1 class="hero-title fade-in fade-in-delay-1">
           We build websites<br />for <em>local businesses</em>
         </h1>
@@ -1094,7 +1041,6 @@
   <section id="services">
     <div class="container">
       <div class="services-header fade-in">
-        <p class="section-label">What we do</p>
         <h2 class="section-title">Services built around<br />your business</h2>
         <div class="divider"></div>
         <p class="section-sub">Everything you need to get online, stay online, and look the part.</p>
@@ -1102,7 +1048,6 @@
 
       <div class="services-list">
         <div class="service-row fade-in fade-in-delay-1">
-          <div class="service-num">01</div>
           <div>
             <h3 class="service-name">Website Design</h3>
             <p class="service-desc">A clean, fast site built around your business, designed to convert visitors into customers.</p>
@@ -1111,7 +1056,6 @@
         </div>
 
         <div class="service-row fade-in fade-in-delay-2">
-          <div class="service-num">02</div>
           <div>
             <h3 class="service-name">Monthly Care</h3>
             <p class="service-desc">Hosting, updates and support, so you can focus on running your business.</p>
@@ -1120,7 +1064,6 @@
         </div>
 
         <div class="service-row fade-in fade-in-delay-3">
-          <div class="service-num">03</div>
           <div>
             <h3 class="service-name">Website Refresh</h3>
             <p class="service-desc">Modernise your existing site and get back online properly, without starting from scratch.</p>
@@ -1135,22 +1078,18 @@
   <section id="why">
     <div class="container">
       <div class="fade-in">
-        <p class="section-label">Why us</p>
         <h2 class="section-title">Built different.</h2>
       </div>
       <div class="why-grid">
         <div class="why-item fade-in fade-in-delay-1">
-          <div class="why-number">01</div>
           <h3 class="why-title">Fast turnaround</h3>
           <p class="why-desc">Most projects delivered in under two weeks. No long waiting lists, no drawn-out timelines.</p>
         </div>
         <div class="why-item fade-in fade-in-delay-2">
-          <div class="why-number">02</div>
           <h3 class="why-title">Mobile first</h3>
           <p class="why-desc">Every site is designed and tested on mobile before anything else, because that's where your customers are.</p>
         </div>
         <div class="why-item fade-in fade-in-delay-3">
-          <div class="why-number">03</div>
           <h3 class="why-title">Based in London</h3>
           <p class="why-desc">London studio, serving businesses across the UK. Real people, real support. Not a faceless agency.</p>
         </div>
@@ -1162,7 +1101,6 @@
   <section id="work">
     <div class="container">
       <div class="work-header fade-in">
-        <p class="section-label">Portfolio</p>
         <h2 class="section-title">Our work</h2>
         <div class="divider"></div>
         <p class="section-sub">A growing portfolio of London businesses we've built for.</p>
@@ -1213,7 +1151,6 @@
   <section id="pricing">
     <div class="container">
       <div class="pricing-header fade-in">
-        <p class="section-label">Pricing</p>
         <h2 class="section-title">Simple, transparent pricing</h2>
         <div class="divider"></div>
         <p class="section-sub">No hidden fees. No surprises. Just honest work at a fair price.</p>
@@ -1259,7 +1196,6 @@
   <section id="testimonials">
     <div class="container">
       <div class="testimonials-header fade-in">
-        <p class="section-label">Testimonials</p>
         <h2 class="section-title">What our clients say</h2>
         <div class="divider"></div>
         <p class="section-sub">Real feedback from London business owners we've worked with.</p>
@@ -1300,7 +1236,6 @@
   <section id="contact">
     <div class="container">
       <div class="contact-inner fade-in">
-        <p class="section-label">Contact</p>
         <h2 class="section-title">Let's talk</h2>
         <div class="divider"></div>
         <p class="section-sub">Tell us about your business and what you're looking for. We'll take it from there.</p>
