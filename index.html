@@ -101,6 +101,13 @@
       text-decoration: none;
     }
 
+    .nav-logo,
+    .footer-logo {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+    }
+
     .nav-links {
       display: flex;
       gap: 32px;
@@ -189,6 +196,23 @@
       background: var(--accent-hover);
       transform: scale(1.04);
       box-shadow: 0 4px 20px var(--accent-glow);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text);
+      border: 1.5px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .btn-ghost:hover {
+      background: var(--accent-tint);
+      transform: scale(1.04);
     }
 
     .link-accent {
@@ -500,7 +524,7 @@
     }
 
     .form-group label {
-      font-size: 0.82rem;
+      font-size: 1rem;
       font-weight: 600;
       color: var(--text);
       letter-spacing: 0.01em;
@@ -1008,11 +1032,12 @@
         <p class="hero-sub fade-in fade-in-delay-2">
           Professional websites for London businesses. Built fast, priced fair.
         </p>
-        <div class="fade-in fade-in-delay-3">
+        <div class="hero-actions fade-in fade-in-delay-3">
           <a href="#work" class="btn btn-primary">
             See our work
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
+          <a href="#contact" class="btn btn-ghost">Get a quote</a>
         </div>
       </div>
     </div>
@@ -1374,11 +1399,12 @@
         const formData = new FormData(enquiryForm);
 
         try {
-          await fetch('/', {
+          const response = await fetch('/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: new URLSearchParams(formData).toString()
           });
+          if (!response.ok) throw new Error('Enquiry failed with status ' + response.status);
           enquiryForm.style.display = 'none';
           formSuccess.classList.add('visible');
           document.getElementById('formStatus').textContent = 'Enquiry sent successfully.';
