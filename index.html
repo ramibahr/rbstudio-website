@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <script>document.documentElement.classList.add('js');</script>
   <style>
     *, *::before, *::after {
       box-sizing: border-box;
@@ -28,18 +29,22 @@
       --card-bg: #1A1A1A;
       --surface-alt: #141414;
       --surface-pill: rgba(255, 255, 255, 0.07);
-      --success: #059669;
-      --success-bg: #ECFDF5;
+      --success: #34D399;
+      --success-bg: rgba(52, 211, 153, 0.12);
       --accent-on-dark: #FAFAFA;
       --section-label-color: rgba(250, 250, 250, 0.45);
+      --surface-deep: #111111;
+      --accent-solid: #FFFFFF;
+      --on-accent: #0F0F0F;
+      --input-border: #6B6B6B;
       --shadow-sm: 0 1px 20px rgba(0, 0, 0, 0.08);
       --shadow-md: 0 12px 40px rgba(0, 0, 0, 0.08);
       --shadow-menu: 0 8px 24px rgba(0, 0, 0, 0.08);
       --text-inverse: #FAFAFA;
       --text-on-dark-muted: rgba(250, 250, 250, 0.55);
-      --error: #DC2626;
-      --error-bg: #FEF2F2;
-      --error-border: #FECACA;
+      --error: #F87171;
+      --error-bg: rgba(248, 113, 113, 0.1);
+      --error-border: rgba(248, 113, 113, 0.35);
       --nav-height: 68px;
     }
 
@@ -68,7 +73,7 @@
     }
 
     nav.scrolled {
-      background: #0F0F0F;
+      background: var(--bg);
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       box-shadow: var(--shadow-sm);
     }
@@ -117,7 +122,7 @@
       cursor: pointer;
       background: none;
       border: none;
-      padding: 10px 12px;
+      padding: 14px 12px;
     }
 
     .nav-toggle span {
@@ -138,9 +143,12 @@
 
     /* ── FADE IN ANIMATION ── */
     .fade-in {
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .js .fade-in {
       opacity: 0;
       transform: translateY(28px);
-      transition: opacity 0.65s ease, transform 0.65s ease;
     }
 
     .fade-in.visible {
@@ -168,12 +176,12 @@
     }
 
     .btn-primary {
-      background: #FFFFFF;
-      color: #0F0F0F;
+      background: var(--accent-solid);
+      color: var(--on-accent);
     }
 
     .btn-primary:hover {
-      background: #E5E5E5;
+      background: var(--accent-hover);
       transform: scale(1.04);
       box-shadow: 0 4px 20px var(--accent-glow);
     }
@@ -334,7 +342,7 @@
 
     .hero-title em {
       font-style: normal;
-      color: #FFFFFF;
+      color: var(--accent-solid);
       text-decoration: underline;
     }
 
@@ -397,7 +405,7 @@
 
     /* ── WHY ── */
     #why {
-      background: #111111;
+      background: var(--surface-deep);
       color: var(--text-inverse);
     }
 
@@ -536,7 +544,7 @@
 
     /* ── CONTACT ── */
     #contact {
-      background: #141414;
+      background: var(--surface-alt);
     }
 
     .contact-inner {
@@ -573,7 +581,7 @@
     .form-group select,
     .form-group textarea {
       background: var(--card-bg);
-      border: 1px solid var(--border);
+      border: 1px solid var(--input-border);
       border-radius: 8px;
       padding: 12px 14px;
       font-size: 0.95rem;
@@ -596,8 +604,14 @@
       min-height: 120px;
     }
 
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: rgba(250, 250, 250, 0.5);
+      opacity: 1;
+    }
+
     .form-group select {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236B7280' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23A3A3A3' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
       background-repeat: no-repeat;
       background-position: right 14px center;
       padding-right: 36px;
@@ -716,7 +730,7 @@
     .divider {
       width: 40px;
       height: 3px;
-      background: #FFFFFF;
+      background: var(--accent-solid);
       border-radius: 2px;
       margin-bottom: 32px;
     }
@@ -807,7 +821,7 @@
       width: 18px;
       height: 18px;
       min-width: 18px;
-      background: rgba(255, 255, 255, 0.08) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%23FFFFFF' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") no-repeat center;
+      background: var(--accent-tint) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%23FFFFFF' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") no-repeat center;
       border-radius: 50%;
     }
 
@@ -907,7 +921,7 @@
       right: 0;
       height: auto;
       z-index: 99;
-      background: #1A1A1A;
+      background: var(--card-bg);
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       padding: 12px 24px 20px;
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.14);
@@ -1012,7 +1026,8 @@
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
       }
-      .fade-in {
+      .fade-in,
+      .js .fade-in {
         opacity: 1;
         transform: none;
       }
