@@ -391,6 +391,49 @@
       margin-top: 56px;
     }
 
+    .section-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    /* ── PROCESS ── */
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      margin-top: 60px;
+    }
+
+    .process-item {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .process-num {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--text);
+      opacity: 0.15;
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+
+    .process-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .process-desc {
+      font-size: 0.92rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
     /* ── WHY ── */
     #why {
       background: var(--surface-deep);
@@ -968,6 +1011,7 @@
         grid-template-columns: 1fr;
       }
 
+      .process-grid,
       .pricing-split,
       .pricing-list {
         grid-template-columns: 1fr;
@@ -1101,6 +1145,33 @@
           Get in touch
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process">
+    <div class="container">
+      <div class="fade-in">
+        <p class="section-label">How it works</p>
+        <h2 class="section-title">Three steps to a site you're proud of</h2>
+      </div>
+      <div class="process-grid">
+        <div class="process-item fade-in fade-in-delay-1">
+          <div class="process-num">01</div>
+          <h3 class="process-title">Brief</h3>
+          <p class="process-desc">Tell us about your business, your goals, and any sites you like the look of. Takes 15 minutes.</p>
+        </div>
+        <div class="process-item fade-in fade-in-delay-2">
+          <div class="process-num">02</div>
+          <h3 class="process-title">Build</h3>
+          <p class="process-desc">We design and build your site, keeping you updated throughout. Most builds take under two weeks.</p>
+        </div>
+        <div class="process-item fade-in fade-in-delay-3">
+          <div class="process-num">03</div>
+          <h3 class="process-title">Launch</h3>
+          <p class="process-desc">We go live, you start getting customers. We stay on hand every month after that.</p>
+        </div>
       </div>
     </div>
   </section>
