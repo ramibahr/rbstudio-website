@@ -529,6 +529,7 @@
       width: 100%;
       height: 100%;
       border: none;
+      pointer-events: none;
     }
 
     .work-card-footer {
@@ -539,27 +540,6 @@
       border-top: 1px solid var(--border);
     }
 
-    .preview-load {
-      position: absolute;
-      inset: 0;
-      margin: auto;
-      height: 44px;
-      width: fit-content;
-      padding: 0 20px;
-      background: var(--card-bg);
-      color: var(--text);
-      border: 1px solid var(--border-strong);
-      border-radius: 8px;
-      font: inherit;
-      font-size: 0.9rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.2s ease;
-    }
-
-    .preview-load:hover {
-      background: var(--accent-tint);
-    }
 
     .work-card-label {
       font-size: 1rem;
@@ -1259,8 +1239,7 @@
       <div class="work-grid">
         <div class="work-card fade-in fade-in-delay-1">
           <div class="work-card-preview">
-            <iframe data-src="https://ramibahr.github.io/tech-mech-demo/" title="Tech Mech Demo" loading="lazy"></iframe>
-            <button type="button" class="preview-load">Load preview</button>
+            <iframe src="https://ramibahr.github.io/tech-mech-demo/" title="Tech Mech Demo"></iframe>
           </div>
           <div class="work-card-footer">
             <div>
@@ -1272,8 +1251,7 @@
         </div>
         <div class="work-card fade-in fade-in-delay-2">
           <div class="work-card-preview">
-            <iframe data-src="https://ramibahr.github.io/zara-kitchen-demo/" title="Zara Kitchen Demo" loading="lazy"></iframe>
-            <button type="button" class="preview-load">Load preview</button>
+            <iframe src="https://ramibahr.github.io/zara-kitchen-demo/" title="Zara Kitchen Demo"></iframe>
           </div>
           <div class="work-card-footer">
             <div>
@@ -1285,8 +1263,7 @@
         </div>
         <div class="work-card fade-in fade-in-delay-3">
           <div class="work-card-preview">
-            <iframe data-src="https://ramibahr.github.io/maison-hair-demo/" title="Maison Hair Demo" loading="lazy"></iframe>
-            <button type="button" class="preview-load">Load preview</button>
+            <iframe src="https://ramibahr.github.io/maison-hair-demo/" title="Maison Hair Demo"></iframe>
           </div>
           <div class="work-card-footer">
             <div>
@@ -1551,15 +1528,6 @@
       });
     });
     ctaObserver.observe(contactSection);
-
-    document.querySelectorAll('.preview-load').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const frame = btn.parentElement.querySelector('iframe');
-        frame.src = frame.dataset.src;
-        btn.remove();
-      });
-    });
-
     document.querySelectorAll('#hero .fade-in').forEach(el => {
       setTimeout(() => el.classList.add('visible'), 100);
     });
