@@ -199,20 +199,15 @@
       box-shadow: 0 4px 20px var(--accent-glow);
     }
 
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
     .btn-ghost {
       background: transparent;
       color: var(--text);
-      border: 1.5px solid var(--border-strong);
+      border: 1.5px solid rgba(255, 255, 255, 0.25);
     }
 
     .btn-ghost:hover {
-      background: var(--accent-tint);
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.5);
       transform: scale(1.04);
     }
 
@@ -1056,12 +1051,14 @@
         <p class="hero-sub fade-in fade-in-delay-2">
           Professional websites for London businesses. Built fast, priced fair.
         </p>
-        <div class="hero-actions fade-in fade-in-delay-3">
+        <div class="fade-in fade-in-delay-3">
+          <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:center;">
           <a href="#work" class="btn btn-primary">
             See our work
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
           <a href="#contact" class="btn btn-ghost">Get a quote</a>
+          </div>
         </div>
       </div>
     </div>
