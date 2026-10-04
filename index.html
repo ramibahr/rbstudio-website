@@ -769,6 +769,22 @@
       color: var(--muted);
     }
 
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-links a {
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--text);
+    }
+
     /* ── DIVIDER ── */
     .divider {
       width: 40px;
@@ -1081,8 +1097,12 @@
 
       .footer-inner {
         flex-direction: column;
-        gap: 8px;
+        gap: 16px;
         text-align: center;
+      }
+
+      .footer-links {
+        justify-content: center;
       }
 
       .form-row {
@@ -1507,6 +1527,10 @@
     <div class="container">
       <div class="footer-inner">
         <a href="#hero" class="footer-logo">RB Studio</a>
+        <div class="footer-links">
+          <a href="https://www.instagram.com/rbstudio.london" target="_blank" rel="noopener">Instagram</a>
+          <a href="mailto:rami@rbstudio.london">rami@rbstudio.london</a>
+        </div>
         <p class="footer-copy">© 2026 RB Studio · Web Design London</p>
       </div>
     </div>
