@@ -556,6 +556,35 @@
       margin-top: 2px;
     }
 
+    /* ── FAQ ── */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      margin-top: 48px;
+    }
+
+    .faq-item {
+      padding: 28px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .faq-item:last-child {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .faq-question {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .faq-answer {
+      font-size: 0.92rem;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 640px;
+    }
+
     /* ── CONTACT ── */
     #contact {
       background: var(--surface-alt);
@@ -972,6 +1001,7 @@
     .mobile-menu.open a:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 0.16s; }
     .mobile-menu.open a:nth-child(4) { opacity: 1; transform: translateY(0); transition-delay: 0.21s; }
     .mobile-menu.open a:nth-child(5) { opacity: 1; transform: translateY(0); transition-delay: 0.26s; }
+    .mobile-menu.open a:nth-child(6) { opacity: 1; transform: translateY(0); transition-delay: 0.31s; }
 
     .mobile-menu a:last-child {
       border-bottom: none;
@@ -1093,6 +1123,7 @@
         <li><a href="#work">Work</a></li>
         <li><a href="#pricing">Pricing</a></li>
         <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#faq">FAQ</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
       <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobileMenu">
@@ -1108,6 +1139,7 @@
     <a href="#work">Work</a>
     <a href="#pricing">Pricing</a>
     <a href="#testimonials">Testimonials</a>
+    <a href="#faq">FAQ</a>
     <a href="#contact">Contact</a>
   </nav>
 
@@ -1360,6 +1392,38 @@
             <cite class="testimonial-name">Priya K.</cite>
             <span class="testimonial-biz">Beauty Therapist, North London</span>
           </footer>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="container">
+      <div class="fade-in">
+        <p class="section-label">FAQ</p>
+        <h2 class="section-title">Common questions</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item fade-in">
+          <h3 class="faq-question">How long does a website take?</h3>
+          <p class="faq-answer">Most builds are live within two weeks of your brief.</p>
+        </div>
+        <div class="faq-item fade-in">
+          <h3 class="faq-question">Do I own the website?</h3>
+          <p class="faq-answer">Yes, completely. The site is yours. The monthly care plan just keeps it hosted and maintained.</p>
+        </div>
+        <div class="faq-item fade-in">
+          <h3 class="faq-question">What if I want changes after launch?</h3>
+          <p class="faq-answer">Small changes are included in your monthly care. Bigger updates can be scoped and quoted separately.</p>
+        </div>
+        <div class="faq-item fade-in">
+          <h3 class="faq-question">Do I need to provide content?</h3>
+          <p class="faq-answer">We can work with what you have. If you need copywriting help, just mention it in your enquiry.</p>
+        </div>
+        <div class="faq-item fade-in">
+          <h3 class="faq-question">What happens if I cancel the monthly care?</h3>
+          <p class="faq-answer">We can transfer the site to your own hosting. You never lose access to what we built.</p>
         </div>
       </div>
     </div>
