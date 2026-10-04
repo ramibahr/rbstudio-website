@@ -981,6 +981,34 @@
       color: var(--accent);
     }
 
+    /* ── MOBILE CTA ── */
+    .mobile-cta {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 16px 24px;
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      z-index: 98;
+    }
+
+    .mobile-cta .btn {
+      width: 100%;
+      justify-content: center;
+    }
+
+    @media (max-width: 640px) {
+      .mobile-cta {
+        display: block;
+      }
+
+      body {
+        padding-bottom: 80px;
+      }
+    }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       .why-grid,
@@ -1471,6 +1499,15 @@
 
     fadeEls.forEach(el => observer.observe(el));
 
+    const mobileCta = document.getElementById('mobileCta');
+    const contactSection = document.getElementById('contact');
+    const ctaObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        mobileCta.style.display = entry.isIntersecting ? 'none' : '';
+      });
+    });
+    ctaObserver.observe(contactSection);
+
     document.querySelectorAll('.preview-load').forEach(btn => {
       btn.addEventListener('click', () => {
         const frame = btn.parentElement.querySelector('iframe');
@@ -1523,5 +1560,6 @@
       });
     }
   </script>
+  <div class="mobile-cta" id="mobileCta"><a href="#contact" class="btn btn-primary">Get a quote</a></div>
 </body>
 </html>
